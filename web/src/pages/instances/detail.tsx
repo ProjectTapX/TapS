@@ -212,23 +212,21 @@ export default function InstanceDetailPage() {
       const n = Number(c)
       if (Number.isFinite(n) && n > 0) containerPort = n
     }
+    form.setFieldsValue({
+      ...info.config,
+      argsText: (info.config.args ?? []).join(' '),
+      dockerEnvText: arrToText(info.config.dockerEnv),
+      dockerVolumesText: arrToText(info.config.dockerVolumes),
+      hostPort: first ? first.host : undefined,
+      containerPort: containerPort,
+      completionWordsText: (info.config.completionWords ?? []).join('\n'),
+      hibernationMode:
+        info.config.hibernationEnabled === true ? 'on'
+        : info.config.hibernationEnabled === false ? 'off'
+        : 'default',
+      hibernationIdleMinutes: info.config.hibernationIdleMinutes,
+    })
     setEditOpen(true)
-    setTimeout(() => {
-      form.setFieldsValue({
-        ...info.config,
-        argsText: (info.config.args ?? []).join(' '),
-        dockerEnvText: arrToText(info.config.dockerEnv),
-        dockerVolumesText: arrToText(info.config.dockerVolumes),
-        hostPort: first ? first.host : undefined,
-        containerPort: containerPort,
-        completionWordsText: (info.config.completionWords ?? []).join('\n'),
-        hibernationMode:
-          info.config.hibernationEnabled === true ? 'on'
-          : info.config.hibernationEnabled === false ? 'off'
-          : 'default',
-        hibernationIdleMinutes: info.config.hibernationIdleMinutes,
-      })
-    }, 0)
   }
 
   const portMin = daemon?.portMin || 25565
@@ -574,9 +572,9 @@ export default function InstanceDetailPage() {
       <Modal
         title={t('common.edit')}
         open={editOpen}
-        onCancel={() => setEditOpen(false)}
+        onCancel={() => { setEditOpen(false); form.resetFields() }}
         onOk={onSave}
-        destroyOnClose
+        forceRender
         width={720}
       >
         <Form form={form} layout="vertical">
@@ -592,9 +590,7 @@ export default function InstanceDetailPage() {
               JRE versions etc.) but can't change the instance type. */}
           <Form.Item noStyle shouldUpdate={(p, n) => p.type !== n.type}>
             {({ getFieldValue }) => {
-              // Non-admins always edit a docker instance (they can't see
-              // type field), so default to that branch when type is unset.
-              const ty = getFieldValue('type') ?? info?.config.type ?? 'docker'
+              const ty = getFieldValue('type') || info?.config.type || 'docker'
               return ty === 'docker' ? (
                 <Form.Item name="command" label={t('instance.runtime')} rules={[{ required: true }]}
                   extra={imageOptions.length === 0
@@ -610,7 +606,7 @@ export default function InstanceDetailPage() {
             }}
           </Form.Item>
           <Form.Item noStyle shouldUpdate={(p, n) => p.type !== n.type}>
-            {({ getFieldValue }) => getFieldValue('type') === 'docker' && (
+            {({ getFieldValue }) => (getFieldValue('type') || info?.config.type || 'docker') === 'docker' && (
               <Form.Item name="argsText" label={t('instance.dockerCmd')} extra={t('instance.dockerCmdHelp')}>
                 <Input className="taps-mono" placeholder='java -Xmx2G -jar server.jar nogui' />
               </Form.Item>
@@ -636,7 +632,7 @@ export default function InstanceDetailPage() {
           </Space>
           {isAdmin && (
             <Form.Item noStyle shouldUpdate={(p, n) => p.type !== n.type}>
-              {({ getFieldValue }) => getFieldValue('type') === 'minecraft' && (
+              {({ getFieldValue }) => (getFieldValue('type') || info?.config.type) === 'minecraft' && (
                 <Space>
                   <Form.Item name="minecraftHost" label="MC Host"><Input placeholder="127.0.0.1" /></Form.Item>
                   <Form.Item name="minecraftPort" label="MC Port"><InputNumber min={1} max={65535} placeholder="25565" /></Form.Item>
@@ -651,7 +647,7 @@ export default function InstanceDetailPage() {
           )}
           {isAdmin && (
             <Form.Item noStyle shouldUpdate={(p, n) => p.type !== n.type}>
-              {({ getFieldValue }) => getFieldValue('type') === 'docker' && (
+              {({ getFieldValue }) => (getFieldValue('type') || info?.config.type || 'docker') === 'docker' && (
                 <>
                   <Form.Item name="dockerEnvText" label={t('docker.env')}><Input.TextArea rows={3} placeholder='EULA=TRUE&#10;MEMORY=2G' /></Form.Item>
                   <Form.Item name="dockerVolumesText" label={t('docker.volumes')}><Input.TextArea rows={2} placeholder='./mc-data:/data' /></Form.Item>
