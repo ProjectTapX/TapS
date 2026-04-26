@@ -7,7 +7,7 @@ build/
 *.db-journal
 *.db-shm
 *.db-wal
-data/
+/data/
 tmp/
 .env
 .vscode/
