@@ -32,19 +32,30 @@ info "Latest version: ${TAG}"
 
 # --- Interactive configuration ---
 # Read from /dev/tty so it works when piped via curl | bash
+# If /dev/tty is unavailable (e.g. non-interactive), defaults are used silently
+prompt() {
+  local var="$1" msg="$2" default="$3"
+  if [[ -t 0 ]] || [[ -e /dev/tty ]]; then
+    read -rp "$msg" "$var" </dev/tty 2>/dev/null || true
+  fi
+  eval "[[ -z \"\$$var\" ]] && $var='$default'"
+}
+prompt_secret() {
+  local var="$1" msg="$2" default="$3"
+  if [[ -t 0 ]] || [[ -e /dev/tty ]]; then
+    read -rsp "$msg" "$var" </dev/tty 2>/dev/null || true
+    echo "" >/dev/tty 2>/dev/null || true
+  fi
+  eval "[[ -z \"\$$var\" ]] && $var='$default'"
+}
+
 echo ""
 echo -e "${CYAN}=== TapS Panel Configuration ===${NC}"
-read -rp "Panel listen port [default: 24444]: " PANEL_PORT </dev/tty
-PANEL_PORT="${PANEL_PORT:-24444}"
-read -rp "Panel data directory [default: /var/lib/taps/panel]: " PANEL_DATA </dev/tty
-PANEL_DATA="${PANEL_DATA:-/var/lib/taps/panel}"
-read -rp "Web static directory [default: /opt/taps/web]: " WEB_DIR </dev/tty
-WEB_DIR="${WEB_DIR:-/opt/taps/web}"
-read -rp "Admin username [default: admin]: " ADMIN_USER </dev/tty
-ADMIN_USER="${ADMIN_USER:-admin}"
-read -rsp "Admin password [default: admin]: " ADMIN_PASS </dev/tty
-ADMIN_PASS="${ADMIN_PASS:-admin}"
-echo ""
+prompt PANEL_PORT "Panel listen port [default: 24444]: " "24444"
+prompt PANEL_DATA "Panel data directory [default: /var/lib/taps/panel]: " "/var/lib/taps/panel"
+prompt WEB_DIR    "Web static directory [default: /opt/taps/web]: " "/opt/taps/web"
+prompt ADMIN_USER "Admin username [default: admin]: " "admin"
+prompt_secret ADMIN_PASS "Admin password [default: admin]: " "admin"
 echo ""
 
 # --- Download ---

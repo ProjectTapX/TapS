@@ -19,7 +19,7 @@ command -v curl  >/dev/null || error "curl is required. Install it first."
 # --- Install Docker if missing ---
 if ! command -v docker >/dev/null 2>&1; then
   warn "Docker not found. Daemon requires Docker for container instances."
-  read -rp "Install Docker now? [Y/n]: " INSTALL_DOCKER </dev/tty
+  read -rp "Install Docker now? [Y/n]: " INSTALL_DOCKER </dev/tty 2>/dev/null || true
   INSTALL_DOCKER="${INSTALL_DOCKER:-Y}"
   if [[ "$INSTALL_DOCKER" =~ ^[Yy]$ ]]; then
     info "Installing Docker via get.docker.com..."
@@ -47,12 +47,19 @@ info "Latest version: ${TAG}"
 
 # --- Interactive configuration ---
 # Read from /dev/tty so it works when piped via curl | bash
+prompt() {
+  local var="$1" msg="$2" default="$3"
+  if [[ -t 0 ]] || [[ -e /dev/tty ]]; then
+    read -rp "$msg" "$var" </dev/tty 2>/dev/null || true
+  fi
+  eval "[[ -z \"\$$var\" ]] && $var='$default'"
+}
+
 echo ""
 echo -e "${CYAN}=== TapS Daemon Configuration ===${NC}"
-read -rp "Daemon listen address [default: :24445]: " DAEMON_ADDR </dev/tty
-DAEMON_ADDR="${DAEMON_ADDR:-:24445}"
-read -rp "Daemon data directory [default: /var/lib/taps/daemon]: " DAEMON_DATA </dev/tty
-DAEMON_DATA="${DAEMON_DATA:-/var/lib/taps/daemon}"
+prompt DAEMON_ADDR "Daemon listen address [default: :24445]: " ":24445"
+prompt DAEMON_DATA "Daemon data directory [default: /var/lib/taps/daemon]: " "/var/lib/taps/daemon"
+echo ""
 echo ""
 
 # --- Download ---
