@@ -66,12 +66,10 @@ curl -fsSL https://raw.githubusercontent.com/ProjectTapX/TapS/main/scripts/insta
 
 > Also available: [Panel only](scripts/install-panel.sh) | [Daemon only](scripts/install-daemon.sh) | [Script documentation](docs/deployment/install-scripts.md)
 
-### Build from Source
-
-### Deploy
+### Build from Source & Deploy
 
 ```bash
-git clone https://github.com/yourname/TapS.git
+git clone https://github.com/ProjectTapX/TapS.git
 cd TapS
 
 # 1. Build binaries
@@ -86,20 +84,7 @@ scp -r dist/web root@server:/opt/taps/web
 # See docs/deployment/single-host.md
 ```
 
-### Local Development
-
-```bash
-# Terminal 1 — Daemon
-cd packages/daemon && go run ./cmd/daemon
-
-# Terminal 2 — Panel
-cd packages/panel && go run ./cmd/panel
-
-# Terminal 3 — Frontend (hot reload, :5173 proxies /api → :24444)
-cd web && npm install && npm run dev
-```
-
-Default credentials: `admin` / `admin` (forced password change on first login).
+> For local development setup, see [Building from Source](docs/development/build.md).
 
 ### Configuration
 

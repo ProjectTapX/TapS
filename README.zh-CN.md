@@ -67,12 +67,10 @@ curl -fsSL https://raw.githubusercontent.com/ProjectTapX/TapS/main/scripts/insta
 
 > 也可选择：[仅安装 Panel](scripts/install-panel.sh) | [仅安装 Daemon](scripts/install-daemon.sh) | [脚本文档](docs/zh/deployment/install-scripts.md)
 
-### 从源码构建
-
-### 部署
+### 从源码构建 & 部署
 
 ```bash
-git clone https://github.com/yourname/TapS.git
+git clone https://github.com/ProjectTapX/TapS.git
 cd TapS
 
 # 1. 构建后端
@@ -87,18 +85,7 @@ scp -r dist/web root@server:/opt/taps/web
 # 详见 docs/deployment/single-host.md
 ```
 
-### 方式三：本地开发
-
-```bash
-# 终端 1 — Daemon
-cd packages/daemon && go run ./cmd/daemon
-
-# 终端 2 — Panel
-cd packages/panel && go run ./cmd/panel
-
-# 终端 3 — 前端（热更新，:5173 代理 /api → :24444）
-cd web && npm install && npm run dev
-```
+> 本地开发环境搭建请参考 [从源码构建](docs/zh/development/build.md)。
 
 ### 配置说明
 
