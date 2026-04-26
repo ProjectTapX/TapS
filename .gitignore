@@ -1,0 +1,35 @@
+node_modules/
+dist/
+build/
+*.log
+*.exe
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+data/
+tmp/
+.env
+.vscode/
+.idea/
+go.work.sum
+packages/*/data/
+packages/panel/panel
+packages/panel/panel.exe
+packages/daemon/daemon
+packages/daemon/daemon.exe
+
+# Claude Code session data
+.claude/
+
+# Internal deploy configs
+.deploy/
+
+# Security audit reports (contain vulnerability details, server IPs, credentials)
+audit-*.md
+API_SECURITY_REPORT*.md
+SECURITY_AUDIT.md
+
+# Build artifacts
+*.tsbuildinfo
+test-results/

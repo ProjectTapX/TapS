@@ -1,0 +1,140 @@
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+:root {
+  --taps-bg: #f5f7fa;
+  --taps-surface: #ffffff;
+  --taps-border: #e6e9ef;
+  --taps-text: #0f172a;
+  --taps-text-muted: #64748b;
+  --taps-primary: #007BFC;
+  --taps-primary-soft: rgba(0, 123, 252, 0.08);
+  --taps-success: #10b981;
+  --taps-warning: #f59e0b;
+  --taps-danger:  #ef4444;
+  /* light-mode sider */
+  --taps-sider-bg: #ffffff;
+  --taps-sider-border: #e6e9ef;
+  --taps-sider-text: #475569;
+  --taps-sider-text-muted: #94a3b8;
+  --taps-sider-hover-bg: rgba(15, 23, 42, 0.04);
+  --taps-sider-active-bg: rgba(0, 123, 252, 0.10);
+  --taps-sider-active-fg: #007BFC;
+  --taps-sider-brand-fg: #0f172a;
+}
+
+[data-theme='dark'] {
+  --taps-bg: #0a0f1f;
+  --taps-surface: #131a2c;
+  --taps-border: #1f2940;
+  --taps-text: #e2e8f0;
+  --taps-text-muted: #8b95a8;
+  --taps-sider-bg: #0f1729;
+  --taps-sider-border: #1f2940;
+  --taps-sider-text: #cbd5e1;
+  --taps-sider-text-muted: #64748b;
+  --taps-sider-hover-bg: rgba(255, 255, 255, 0.05);
+  --taps-sider-active-bg: rgba(0, 123, 252, 0.18);
+  --taps-sider-active-fg: #ffffff;
+  --taps-sider-brand-fg: #ffffff;
+}
+
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--taps-bg);
+  color: var(--taps-text);
+}
+
+/* Scrollbars: Vultr-ish thin */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #c7ced8; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #9aa4b1; }
+[data-theme='dark'] ::-webkit-scrollbar-thumb { background: #2c3650; }
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover { background: #404d6e; }
+
+/* Sider menu: cleaner highlight; works for both light and dark */
+.taps-sider {
+  background: var(--taps-sider-bg) !important;
+  border-right: 1px solid var(--taps-sider-border);
+}
+.taps-sider .ant-menu,
+.taps-sider .ant-menu-dark {
+  background: transparent !important;
+}
+.taps-sider .ant-menu .ant-menu-item,
+.taps-sider .ant-menu-dark .ant-menu-item {
+  margin: 4px 12px !important;
+  width: auto !important;
+  border-radius: 8px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+  color: var(--taps-sider-text) !important;
+}
+.taps-sider .ant-menu .ant-menu-item:hover,
+.taps-sider .ant-menu-dark .ant-menu-item:hover {
+  background: var(--taps-sider-hover-bg) !important;
+  color: var(--taps-sider-brand-fg) !important;
+}
+.taps-sider .ant-menu .ant-menu-item-selected,
+.taps-sider .ant-menu-dark .ant-menu-item-selected {
+  background: var(--taps-sider-active-bg) !important;
+  color: var(--taps-sider-active-fg) !important;
+}
+.taps-sider .ant-menu .ant-menu-item-selected::before,
+.taps-sider .ant-menu-dark .ant-menu-item-selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: var(--taps-primary);
+  border-radius: 0 3px 3px 0;
+}
+
+/* Cards: a touch flatter */
+.ant-card { border-color: var(--taps-border) !important; }
+.ant-card-head { border-bottom-color: var(--taps-border) !important; }
+
+/* Tables: tighter, lighter */
+.ant-table-thead > tr > th {
+  background: transparent !important;
+  color: var(--taps-text-muted) !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  border-bottom-color: var(--taps-border) !important;
+}
+.ant-table-tbody > tr > td { border-bottom-color: var(--taps-border) !important; }
+
+/* Page transitions */
+.taps-page { animation: taps-fade .18s ease-out; }
+@keyframes taps-fade {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* utility */
+.taps-text-muted { color: var(--taps-text-muted); }
+.taps-mono {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12.5px;
+}
+
+/* Hide Google reCAPTCHA's persistent floating "protected by reCAPTCHA"
+   badge globally. Google's ToS allows hiding it as long as the page
+   carries the Privacy / Terms disclosure text; we render that line
+   inside LoginCaptcha.tsx on the login form. The badge otherwise
+   stays pinned bottom-right across all in-app routes after login,
+   which is visually noisy and only goes away on full page reload. */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
