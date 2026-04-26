@@ -35,16 +35,18 @@ info "Latest version: ${TAG}"
 # If /dev/tty is unavailable (e.g. non-interactive), defaults are used silently
 prompt() {
   local var="$1" msg="$2" default="$3"
-  if [[ -t 0 ]] || [[ -e /dev/tty ]]; then
-    read -rp "$msg" "$var" </dev/tty 2>/dev/null || true
+  if [[ -e /dev/tty ]]; then
+    echo -n "$msg" >/dev/tty
+    read -r "$var" </dev/tty || true
   fi
   eval "[[ -z \"\$$var\" ]] && $var='$default'"
 }
 prompt_secret() {
   local var="$1" msg="$2" default="$3"
-  if [[ -t 0 ]] || [[ -e /dev/tty ]]; then
-    read -rsp "$msg" "$var" </dev/tty 2>/dev/null || true
-    echo "" >/dev/tty 2>/dev/null || true
+  if [[ -e /dev/tty ]]; then
+    echo -n "$msg" >/dev/tty
+    read -rs "$var" </dev/tty || true
+    echo "" >/dev/tty
   fi
   eval "[[ -z \"\$$var\" ]] && $var='$default'"
 }

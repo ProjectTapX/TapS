@@ -19,7 +19,8 @@ command -v curl  >/dev/null || error "curl is required. Install it first."
 # --- Install Docker if missing ---
 if ! command -v docker >/dev/null 2>&1; then
   warn "Docker not found. Daemon requires Docker for container instances."
-  read -rp "Install Docker now? [Y/n]: " INSTALL_DOCKER </dev/tty 2>/dev/null || true
+  echo -n "Install Docker now? [Y/n]: " >/dev/tty
+  read -r INSTALL_DOCKER </dev/tty || true
   INSTALL_DOCKER="${INSTALL_DOCKER:-Y}"
   if [[ "$INSTALL_DOCKER" =~ ^[Yy]$ ]]; then
     info "Installing Docker via get.docker.com..."
@@ -49,8 +50,9 @@ info "Latest version: ${TAG}"
 # Read from /dev/tty so it works when piped via curl | bash
 prompt() {
   local var="$1" msg="$2" default="$3"
-  if [[ -t 0 ]] || [[ -e /dev/tty ]]; then
-    read -rp "$msg" "$var" </dev/tty 2>/dev/null || true
+  if [[ -e /dev/tty ]]; then
+    echo -n "$msg" >/dev/tty
+    read -r "$var" </dev/tty || true
   fi
   eval "[[ -z \"\$$var\" ]] && $var='$default'"
 }
