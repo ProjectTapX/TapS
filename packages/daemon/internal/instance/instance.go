@@ -207,6 +207,11 @@ func (i *Instance) startDocker(wd string) error {
 	}
 	dockerArgs := []string{"run", "-i", "--rm", "--pull", "never", "--name", "taps-" + i.cfg.UUID}
 	dockerArgs = append(dockerArgs, "-w", "/data")
+	// Auto-mount managed volume to /data inside the container
+	if i.cfg.ManagedVolume != "" && i.mgr != nil && i.mgr.vols != nil {
+		hostPath := filepath.Join(i.mgr.vols.Root(), i.cfg.ManagedVolume)
+		dockerArgs = append(dockerArgs, "-v", hostPath+":/data")
+	}
 	for _, kv := range i.cfg.DockerEnv {
 		if strings.TrimSpace(kv) != "" {
 			dockerArgs = append(dockerArgs, "-e", kv)
