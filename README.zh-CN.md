@@ -10,6 +10,7 @@ TapS 采用 Panel + Daemon 双端架构，Panel 负责 Web UI 和集中管控，
 ![screenshot1](docs/images/screenshot1.png)
 ![screenshot2](docs/images/screenshot2.png)
 ![screenshot3](docs/images/screenshot3.png)
+![screenshot4](docs/images/screenshot4.png)
 
 ## ✨ 功能特性
 

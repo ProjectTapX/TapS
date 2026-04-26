@@ -10,6 +10,7 @@ TapS uses a Panel + Daemon dual-architecture. The Panel handles the Web UI and c
 ![screenshot1](docs/images/screenshot1.png)
 ![screenshot2](docs/images/screenshot2.png)
 ![screenshot3](docs/images/screenshot3.png)
+![screenshot4](docs/images/screenshot4.png)
 
 ## ✨ Features
 
