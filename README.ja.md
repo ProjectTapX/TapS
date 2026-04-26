@@ -6,6 +6,11 @@
 
 TapS は Panel + Daemon のデュアルアーキテクチャを採用。Panel が Web UI と集中管理を担当し、Daemon が各ゲームホストマシンでコンテナを運用します。Minecraft Java / Bedrock / Terraria および Docker コンテナ化されたプロセスの統合管理に対応し、リアル PTY ターミナル、ファイル管理、バックアップ復元、自動休止、SSO ログイン、多言語対応などのモダンな管理体験を提供します。
 
+![screenshot](docs/images/screenshot.png)
+![screenshot1](docs/images/screenshot1.png)
+![screenshot2](docs/images/screenshot2.png)
+![screenshot3](docs/images/screenshot3.png)
+
 ## ✨ 機能
 
 - **デュアルアーキテクチャ** — Panel（コントロールプレーン + Web UI）+ Daemon（ホストエージェント）、WSS + TLS フィンガープリントピンニング

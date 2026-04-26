@@ -6,7 +6,10 @@
 
 TapS 采用 Panel + Daemon 双端架构，Panel 负责 Web UI 和集中管控，Daemon 部署在每台游戏宿主机上运行容器。支持 Minecraft Java / Bedrock / Terraria 以及任何 Docker 容器化进程的统一管理，提供真 PTY 终端、文件管理、备份还原、自动休眠、SSO 登录、多语言等现代游戏服管理体验。
 
-<!-- ![screenshot](docs/images/screenshot.png) -->
+![screenshot](docs/images/screenshot.png)
+![screenshot1](docs/images/screenshot1.png)
+![screenshot2](docs/images/screenshot2.png)
+![screenshot3](docs/images/screenshot3.png)
 
 ## ✨ 功能特性
 
