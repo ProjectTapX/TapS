@@ -15,7 +15,21 @@ error() { echo -e "${RED}[ERROR]${NC} $*" >&2; exit 1; }
 # --- Pre-checks ---
 [[ $(id -u) -eq 0 ]] || error "Please run as root (sudo)"
 command -v curl  >/dev/null || error "curl is required. Install it first."
-command -v docker >/dev/null || warn "Docker not found. Daemon requires Docker for container instances."
+
+# --- Install Docker if missing ---
+if ! command -v docker >/dev/null 2>&1; then
+  warn "Docker not found. Daemon requires Docker for container instances."
+  read -rp "Install Docker now? [Y/n]: " INSTALL_DOCKER </dev/tty
+  INSTALL_DOCKER="${INSTALL_DOCKER:-Y}"
+  if [[ "$INSTALL_DOCKER" =~ ^[Yy]$ ]]; then
+    info "Installing Docker via get.docker.com..."
+    curl -fsSL https://get.docker.com | sh
+    systemctl enable --now docker
+    info "Docker installed successfully."
+  else
+    warn "Skipping Docker installation. Daemon may not work properly without Docker."
+  fi
+fi
 
 # --- Detect architecture ---
 case "$(uname -m)" in
@@ -32,11 +46,12 @@ TAG=$(curl -fsSL "$API_URL" | grep '"tag_name"' | head -1 | cut -d'"' -f4)
 info "Latest version: ${TAG}"
 
 # --- Interactive configuration ---
+# Read from /dev/tty so it works when piped via curl | bash
 echo ""
 echo -e "${CYAN}=== TapS Daemon Configuration ===${NC}"
-read -rp "Daemon listen address [default: :24445]: " DAEMON_ADDR
+read -rp "Daemon listen address [default: :24445]: " DAEMON_ADDR </dev/tty
 DAEMON_ADDR="${DAEMON_ADDR:-:24445}"
-read -rp "Daemon data directory [default: /var/lib/taps/daemon]: " DAEMON_DATA
+read -rp "Daemon data directory [default: /var/lib/taps/daemon]: " DAEMON_DATA </dev/tty
 DAEMON_DATA="${DAEMON_DATA:-/var/lib/taps/daemon}"
 echo ""
 

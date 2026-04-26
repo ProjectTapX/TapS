@@ -31,17 +31,18 @@ TAG=$(curl -fsSL "$API_URL" | grep '"tag_name"' | head -1 | cut -d'"' -f4)
 info "Latest version: ${TAG}"
 
 # --- Interactive configuration ---
+# Read from /dev/tty so it works when piped via curl | bash
 echo ""
 echo -e "${CYAN}=== TapS Panel Configuration ===${NC}"
-read -rp "Panel listen port [default: 24444]: " PANEL_PORT
+read -rp "Panel listen port [default: 24444]: " PANEL_PORT </dev/tty
 PANEL_PORT="${PANEL_PORT:-24444}"
-read -rp "Panel data directory [default: /var/lib/taps/panel]: " PANEL_DATA
+read -rp "Panel data directory [default: /var/lib/taps/panel]: " PANEL_DATA </dev/tty
 PANEL_DATA="${PANEL_DATA:-/var/lib/taps/panel}"
-read -rp "Web static directory [default: /opt/taps/web]: " WEB_DIR
+read -rp "Web static directory [default: /opt/taps/web]: " WEB_DIR </dev/tty
 WEB_DIR="${WEB_DIR:-/opt/taps/web}"
-read -rp "Admin username [default: admin]: " ADMIN_USER
+read -rp "Admin username [default: admin]: " ADMIN_USER </dev/tty
 ADMIN_USER="${ADMIN_USER:-admin}"
-read -rsp "Admin password [default: admin]: " ADMIN_PASS
+read -rsp "Admin password [default: admin]: " ADMIN_PASS </dev/tty
 ADMIN_PASS="${ADMIN_PASS:-admin}"
 echo ""
 echo ""
