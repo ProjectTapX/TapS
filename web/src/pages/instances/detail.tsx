@@ -212,21 +212,23 @@ export default function InstanceDetailPage() {
       const n = Number(c)
       if (Number.isFinite(n) && n > 0) containerPort = n
     }
-    form.setFieldsValue({
-      ...info.config,
-      argsText: (info.config.args ?? []).join(' '),
-      dockerEnvText: arrToText(info.config.dockerEnv),
-      dockerVolumesText: arrToText(info.config.dockerVolumes),
-      hostPort: first ? first.host : undefined,
-      containerPort: containerPort,
-      completionWordsText: (info.config.completionWords ?? []).join('\n'),
-      hibernationMode:
-        info.config.hibernationEnabled === true ? 'on'
-        : info.config.hibernationEnabled === false ? 'off'
-        : 'default',
-      hibernationIdleMinutes: info.config.hibernationIdleMinutes,
-    })
     setEditOpen(true)
+    setTimeout(() => {
+      form.setFieldsValue({
+        ...info.config,
+        argsText: (info.config.args ?? []).join(' '),
+        dockerEnvText: arrToText(info.config.dockerEnv),
+        dockerVolumesText: arrToText(info.config.dockerVolumes),
+        hostPort: first ? first.host : undefined,
+        containerPort: containerPort,
+        completionWordsText: (info.config.completionWords ?? []).join('\n'),
+        hibernationMode:
+          info.config.hibernationEnabled === true ? 'on'
+          : info.config.hibernationEnabled === false ? 'off'
+          : 'default',
+        hibernationIdleMinutes: info.config.hibernationIdleMinutes,
+      })
+    }, 0)
   }
 
   const portMin = daemon?.portMin || 25565
