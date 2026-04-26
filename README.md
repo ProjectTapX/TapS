@@ -7,6 +7,9 @@ Open-source game server management panel — one panel to host all your game ser
 TapS uses a Panel + Daemon dual-architecture. The Panel handles the Web UI and centralized management, while Daemons run on each game host machine to manage containers. Supports Minecraft Java / Bedrock / Terraria and any Docker-containerized process, featuring real PTY terminals, file management, backup & restore, auto-hibernation, SSO login, multi-language support, and more.
 
 ![screenshot](docs/images/screenshot.png)
+![screenshot1](docs/images/screenshot1.png)
+![screenshot2](docs/images/screenshot2.png)
+![screenshot3](docs/images/screenshot3.png)
 
 ## ✨ Features
 
