@@ -37,6 +37,20 @@ prompt_secret() {
 [[ $(id -u) -eq 0 ]] || error "Please run as root (sudo)"
 command -v curl  >/dev/null || error "curl is required. Install it first."
 
+# --- Install iptables if missing (required by Docker) ---
+if ! command -v iptables >/dev/null 2>&1; then
+  info "Installing iptables (required by Docker)..."
+  if command -v apt-get >/dev/null 2>&1; then
+    apt-get update -qq && apt-get install -y -qq iptables >/dev/null
+  elif command -v yum >/dev/null 2>&1; then
+    yum install -y -q iptables >/dev/null
+  elif command -v dnf >/dev/null 2>&1; then
+    dnf install -y -q iptables >/dev/null
+  else
+    warn "Could not auto-install iptables. Please install it manually."
+  fi
+fi
+
 # --- Install Docker if missing ---
 if ! command -v docker >/dev/null 2>&1; then
   warn "Docker not found. Daemon requires Docker for container instances."

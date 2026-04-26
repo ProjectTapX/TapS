@@ -581,7 +581,8 @@ export default function InstanceDetailPage() {
           <Form.Item name="name" label={t('instance.name')} rules={[{ required: true }]}><Input /></Form.Item>
           {isAdmin && (
             <Form.Item name="type" label={t('instance.type')}>
-              <Select options={['generic', 'minecraft', 'bedrock', 'terraria', 'docker'].map(v => ({ label: v, value: v }))} />
+              <Select disabled={!!daemon?.requireDocker}
+                options={(daemon?.requireDocker ? ['docker'] : ['generic', 'minecraft', 'bedrock', 'terraria', 'docker']).map(v => ({ label: v, value: v }))} />
             </Form.Item>
           )}
           {/* Image / runtime selector. User role can switch between
