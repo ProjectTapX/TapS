@@ -53,6 +53,15 @@ bash scripts/build.sh
 
 詳細なデプロイ手順: [docs/ja/](docs/ja/)
 
+### クイックインストール（Linux）
+
+```bash
+# ワンコマンドインストール（Panel + Daemon 同一マシン）
+curl -fsSL https://raw.githubusercontent.com/ProjectTapX/TapS/main/scripts/install.sh | bash
+```
+
+> その他: [Panel のみ](scripts/install-panel.sh) | [Daemon のみ](scripts/install-daemon.sh) | [スクリプトドキュメント](docs/ja/deployment/install-scripts.md)
+
 ### ローカル開発
 
 ```bash

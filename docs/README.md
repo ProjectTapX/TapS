@@ -14,6 +14,7 @@ TapS is a game server management panel for Minecraft (and other Docker-container
 | [Panel Only](deployment/panel-only.md) | Centralized Panel, remote Daemons |
 | [Daemon Only](deployment/daemon-only.md) | Add a new node to existing Panel |
 | [Nginx + HTTPS](deployment/nginx-https.md) | Reverse proxy with Let's Encrypt |
+| [Install Scripts](deployment/install-scripts.md) | One-click curl \| bash deployment |
 
 ---
 

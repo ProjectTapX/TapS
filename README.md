@@ -57,6 +57,17 @@ TapS uses a Panel + Daemon dual-architecture. The Panel handles the Web UI and c
 - **Docker Engine** (on Daemon hosts, for running game containers)
 - **Linux** (Daemon production only; macOS/Windows for local development with degraded features)
 
+### Quick Install (Linux)
+
+```bash
+# One-command install (Panel + Daemon on the same machine)
+curl -fsSL https://raw.githubusercontent.com/ProjectTapX/TapS/main/scripts/install.sh | bash
+```
+
+> Also available: [Panel only](scripts/install-panel.sh) | [Daemon only](scripts/install-daemon.sh) | [Script documentation](docs/deployment/install-scripts.md)
+
+### Build from Source
+
 ### Deploy
 
 ```bash

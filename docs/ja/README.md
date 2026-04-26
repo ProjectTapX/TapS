@@ -18,6 +18,7 @@
 - [Panel のみデプロイ](deployment/panel-only.md) — Panel 単体 + リモート Daemon
 - [Daemon のみデプロイ](deployment/daemon-only.md) — 新しいノードの追加
 - [Nginx リバースプロキシ + HTTPS](deployment/nginx-https.md)
+- [ワンクリックインストールスクリプト](deployment/install-scripts.md) — curl | bash クイックデプロイ
 
 ## 運用
 

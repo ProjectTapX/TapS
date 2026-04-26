@@ -58,6 +58,17 @@ TapS 采用 Panel + Daemon 双端架构，Panel 负责 Web UI 和集中管控，
 - **Linux**（Daemon 生产环境仅支持 Linux；macOS/Windows 可用于本地开发但功能降级）
 
 
+### 快速安装（Linux）
+
+```bash
+# 一键安装（Panel + Daemon 同机部署）
+curl -fsSL https://raw.githubusercontent.com/ProjectTapX/TapS/main/scripts/install.sh | bash
+```
+
+> 也可选择：[仅安装 Panel](scripts/install-panel.sh) | [仅安装 Daemon](scripts/install-daemon.sh) | [脚本文档](docs/zh/deployment/install-scripts.md)
+
+### 从源码构建
+
 ### 部署
 
 ```bash
