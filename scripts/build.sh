@@ -2,7 +2,7 @@
 # Cross-compile panel and daemon binaries into ./dist for common targets.
 # Web bundle is built into web/dist by `npm run build`.
 set -euo pipefail
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 
 export GOFLAGS="-trimpath"
 LDFLAGS='-s -w'
@@ -11,9 +11,6 @@ mkdir -p dist
 TARGETS=(
   "linux amd64"
   "linux arm64"
-  "darwin amd64"
-  "darwin arm64"
-  "windows amd64"
 )
 
 build() {
