@@ -27,8 +27,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/taps/daemon/internal/minecraft"
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/minecraft"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 // Manager coordinates the SLP poller, the per-instance watchers, and

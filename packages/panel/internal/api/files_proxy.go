@@ -11,7 +11,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/taps/panel/internal/daemonclient"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/daemonclient"
 )
 
 func jsonUnmarshal(b []byte, v any) error  { return json.Unmarshal(b, v) }

@@ -13,10 +13,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/auth"
-	"github.com/taps/panel/internal/captcha"
-	"github.com/taps/panel/internal/config"
-	"github.com/taps/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/auth"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/captcha"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/config"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
 )
 
 type AuthHandler struct {

@@ -11,7 +11,7 @@ import (
 
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
 )
 
 const apiKeyPrefix = "tps_"

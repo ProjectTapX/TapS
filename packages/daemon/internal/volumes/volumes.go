@@ -31,7 +31,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 type Manager struct {

@@ -22,8 +22,8 @@ import (
 
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/panel/internal/netutil"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/netutil"
 )
 
 const settingKey = "alert_webhook_url"

@@ -1,4 +1,4 @@
-module github.com/taps/panel
+module github.com/ProjectTapX/TapS/packages/panel
 
 go 1.25.0
 
@@ -15,7 +15,7 @@ require (
 	github.com/glebarez/sqlite v1.11.0
 	github.com/gorilla/websocket v1.5.3
 	github.com/robfig/cron/v3 v3.0.1
-	github.com/taps/shared v0.0.0-00010101000000-000000000000
+	github.com/ProjectTapX/TapS/packages/shared v0.0.0-00010101000000-000000000000
 )
 
 require (
@@ -58,4 +58,4 @@ require (
 	modernc.org/sqlite v1.23.1 // indirect
 )
 
-replace github.com/taps/shared => ../shared
+replace github.com/ProjectTapX/TapS/packages/shared => ../shared

@@ -7,8 +7,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/taps/panel/internal/daemonclient"
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/daemonclient"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 type VolumeHandler struct{ Reg *daemonclient.Registry }

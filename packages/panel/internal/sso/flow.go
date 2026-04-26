@@ -16,8 +16,8 @@ import (
 	"golang.org/x/oauth2"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/auth"
-	"github.com/taps/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/auth"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
 )
 
 // CallbackError carries a stable error code (matched against the

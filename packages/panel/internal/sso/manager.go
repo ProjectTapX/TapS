@@ -28,8 +28,8 @@ import (
 	"golang.org/x/oauth2"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/panel/internal/secrets"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/secrets"
 )
 
 // CallbackPath is the path component appended to publicURL for the

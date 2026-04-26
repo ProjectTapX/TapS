@@ -4,7 +4,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/taps/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
 )
 
 // DTOs for response bodies. Even though model.User.PasswordHash and

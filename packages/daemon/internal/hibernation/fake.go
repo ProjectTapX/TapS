@@ -14,7 +14,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 // fakeServer impersonates a Minecraft server so that:

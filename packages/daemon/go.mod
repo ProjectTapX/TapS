@@ -1,4 +1,4 @@
-module github.com/taps/daemon
+module github.com/ProjectTapX/TapS/packages/daemon
 
 go 1.22
 
@@ -7,7 +7,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/websocket v1.5.3
 	github.com/shirou/gopsutil/v3 v3.24.5
-	github.com/taps/shared v0.0.0
+	github.com/ProjectTapX/TapS/packages/shared v0.0.0
 	golang.org/x/text v0.18.0
 )
 
@@ -25,4 +25,4 @@ require (
 	golang.org/x/sys v0.20.0 // indirect
 )
 
-replace github.com/taps/shared => ../shared
+replace github.com/ProjectTapX/TapS/packages/shared => ../shared

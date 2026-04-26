@@ -11,8 +11,8 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 
-	"github.com/taps/panel/internal/auth"
-	"github.com/taps/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/auth"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
 )
 
 type UserHandler struct {

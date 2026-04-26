@@ -8,9 +8,9 @@ import (
 	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/auth"
-	"github.com/taps/panel/internal/config"
-	"github.com/taps/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/auth"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/config"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
 )
 
 func Open(cfg *config.Config) (*gorm.DB, error) {

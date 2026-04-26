@@ -5,7 +5,7 @@ package volumes
 import (
 	"errors"
 
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 // Stubs for non-linux builds (Windows / macOS dev). Managed volumes only

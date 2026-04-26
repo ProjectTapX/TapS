@@ -12,15 +12,15 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/taps/daemon/internal/backup"
-	"github.com/taps/daemon/internal/config"
-	"github.com/taps/daemon/internal/deploy"
-	dfs "github.com/taps/daemon/internal/fs"
-	"github.com/taps/daemon/internal/hibernation"
-	"github.com/taps/daemon/internal/instance"
-	"github.com/taps/daemon/internal/rpc"
-	"github.com/taps/daemon/internal/volumes"
-	"github.com/taps/shared/tlscert"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/backup"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/config"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/deploy"
+	dfs "github.com/ProjectTapX/TapS/packages/daemon/internal/fs"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/hibernation"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/instance"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/rpc"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/volumes"
+	"github.com/ProjectTapX/TapS/packages/shared/tlscert"
 )
 
 func main() {

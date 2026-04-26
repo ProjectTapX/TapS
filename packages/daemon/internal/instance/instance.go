@@ -18,8 +18,8 @@ import (
 
 	"github.com/aymanbagabas/go-pty"
 
-	"github.com/taps/daemon/internal/docker"
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/docker"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 // audit-2026-04-25 MED7: defence-in-depth UUID gate. Every site that

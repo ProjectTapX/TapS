@@ -8,7 +8,7 @@ import (
 	"github.com/shirou/gopsutil/v3/host"
 	"github.com/shirou/gopsutil/v3/mem"
 
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 func Snapshot() protocol.MonitorSnapshot {

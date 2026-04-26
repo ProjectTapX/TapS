@@ -15,17 +15,17 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/taps/panel/internal/alerts"
-	"github.com/taps/panel/internal/api"
-	"github.com/taps/panel/internal/config"
-	"github.com/taps/panel/internal/daemonclient"
-	"github.com/taps/panel/internal/loglimit"
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/panel/internal/monitorhist"
-	"github.com/taps/panel/internal/scheduler"
-	"github.com/taps/panel/internal/secrets"
-	"github.com/taps/panel/internal/sso"
-	"github.com/taps/panel/internal/store"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/alerts"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/api"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/config"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/daemonclient"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/loglimit"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/monitorhist"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/scheduler"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/secrets"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/sso"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/store"
 )
 
 func main() {

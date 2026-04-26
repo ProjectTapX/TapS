@@ -17,15 +17,15 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/alerts"
-	"github.com/taps/panel/internal/captcha"
-	"github.com/taps/panel/internal/daemonclient"
-	"github.com/taps/panel/internal/loglimit"
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/panel/internal/secrets"
-	"github.com/taps/panel/internal/serverdeploy"
-	"github.com/taps/panel/internal/sso"
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/alerts"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/captcha"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/daemonclient"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/loglimit"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/secrets"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/serverdeploy"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/sso"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 type SettingsHandler struct {

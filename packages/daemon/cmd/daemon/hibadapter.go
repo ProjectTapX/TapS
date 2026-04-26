@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/taps/daemon/internal/hibernation"
-	"github.com/taps/daemon/internal/instance"
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/hibernation"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/instance"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 // hibProvider adapts *instance.Manager to the hibernation.InstanceProvider

@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 // Audit-2026-04-24-v3 H5: defence against the docker CLI flag-injection

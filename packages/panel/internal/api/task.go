@@ -7,10 +7,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/access"
-	"github.com/taps/panel/internal/auth"
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/panel/internal/scheduler"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/access"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/auth"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/scheduler"
 )
 
 type TaskHandler struct {

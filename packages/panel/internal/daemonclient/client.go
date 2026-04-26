@@ -17,8 +17,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
 
-	"github.com/taps/shared/protocol"
-	"github.com/taps/shared/tlscert"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/shared/tlscert"
 )
 
 // callTimeout is a safety net so Calls without an explicit ctx deadline don't

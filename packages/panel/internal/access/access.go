@@ -3,7 +3,7 @@ package access
 import (
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
 )
 
 // HasPerm reports whether the given user holds the requested permission bit

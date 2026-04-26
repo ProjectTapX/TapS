@@ -14,12 +14,12 @@ import (
 	"github.com/gorilla/websocket"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/access"
-	"github.com/taps/panel/internal/auth"
-	"github.com/taps/panel/internal/config"
-	"github.com/taps/panel/internal/daemonclient"
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/access"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/auth"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/config"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/daemonclient"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 // makeWSUpgrader builds the gorilla Upgrader with a CheckOrigin pinned

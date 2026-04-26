@@ -12,7 +12,7 @@ import (
 
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
 )
 
 // Default per-table caps if the admin hasn't saved a setting yet.

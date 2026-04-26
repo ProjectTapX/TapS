@@ -15,9 +15,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/daemonclient"
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/shared/tlscert"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/daemonclient"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/shared/tlscert"
 )
 
 // daemonFpRe enforces the canonical SHA-256 colon-hex format produced

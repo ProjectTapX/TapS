@@ -14,7 +14,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 // Ping connects to a 1.7+ server and returns its status line.

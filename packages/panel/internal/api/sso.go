@@ -22,10 +22,10 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 
-	"github.com/taps/panel/internal/auth"
-	"github.com/taps/panel/internal/config"
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/panel/internal/sso"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/auth"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/config"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/sso"
 )
 
 type SSOHandler struct {

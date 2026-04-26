@@ -8,10 +8,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/taps/panel/internal/auth"
-	"github.com/taps/panel/internal/daemonclient"
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/auth"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/daemonclient"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 // DeployHandler implements one-click Minecraft server deployment using the

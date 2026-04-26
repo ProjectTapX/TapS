@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/auth"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/auth"
 )
 
 // queryAuth validates a JWT passed via ?token= for endpoints where the

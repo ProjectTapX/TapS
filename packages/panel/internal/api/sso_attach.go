@@ -8,10 +8,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/auth"
-	"github.com/taps/panel/internal/config"
-	"github.com/taps/panel/internal/secrets"
-	"github.com/taps/panel/internal/sso"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/auth"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/config"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/secrets"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/sso"
 )
 
 // settingsHandlerHook is set by router.go right after it constructs

@@ -23,9 +23,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/panel/internal/secrets"
-	"github.com/taps/panel/internal/sso"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/secrets"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/sso"
 )
 
 type SSOAdminHandler struct {

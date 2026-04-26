@@ -3,7 +3,7 @@ package monitor
 import (
 	"github.com/shirou/gopsutil/v3/process"
 
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 // ProcessSnapshot samples CPU/memory for the given PID. Returns Running=false

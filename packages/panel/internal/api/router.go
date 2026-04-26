@@ -12,14 +12,14 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/alerts"
-	"github.com/taps/panel/internal/auth"
-	"github.com/taps/panel/internal/config"
-	"github.com/taps/panel/internal/daemonclient"
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/panel/internal/loglimit"
-	"github.com/taps/panel/internal/monitorhist"
-	"github.com/taps/panel/internal/scheduler"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/alerts"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/auth"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/config"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/daemonclient"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/loglimit"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/monitorhist"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/scheduler"
 )
 
 func NewRouter(cfg *config.Config, db *gorm.DB, reg *daemonclient.Registry, sched *scheduler.Scheduler, hist *monitorhist.Collector, al *alerts.Dispatcher, logCap *loglimit.Manager) (*gin.Engine, *gin.RouterGroup, *gin.RouterGroup) {

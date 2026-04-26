@@ -23,9 +23,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/taps/daemon/internal/instance"
-	"github.com/taps/daemon/internal/volumes"
-	"github.com/taps/shared/protocol"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/instance"
+	"github.com/ProjectTapX/TapS/packages/daemon/internal/volumes"
+	"github.com/ProjectTapX/TapS/packages/shared/protocol"
 )
 
 // Manager owns active deploys (one per instance UUID at a time).

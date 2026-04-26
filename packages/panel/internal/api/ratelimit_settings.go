@@ -16,8 +16,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"github.com/taps/panel/internal/model"
-	"github.com/taps/shared/ratelimit"
+	"github.com/ProjectTapX/TapS/packages/panel/internal/model"
+	"github.com/ProjectTapX/TapS/packages/shared/ratelimit"
 )
 
 const (
