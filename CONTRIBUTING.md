@@ -22,7 +22,7 @@ Thank you for your interest in TapS! Here's how to get involved.
    cd packages/daemon && go build ./cmd/daemon
 
    # Frontend build
-   cd web && npm run build
+   cd web && pnpm install && pnpm run build
 
    # i18n alignment check (zh/en/ja keys must match)
    node scripts/i18n-gap-check.js

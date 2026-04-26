@@ -33,3 +33,4 @@ SECURITY_AUDIT.md
 # Build artifacts
 *.tsbuildinfo
 test-results/
+package-lock.json

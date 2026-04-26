@@ -29,7 +29,7 @@ build panel
 build daemon
 
 echo "==> web"
-( cd web && npm install --silent && npm run build )
+( cd web && pnpm install --frozen-lockfile && pnpm run build )
 cp -R web/dist dist/web
 
 echo "All artifacts written to ./dist"
