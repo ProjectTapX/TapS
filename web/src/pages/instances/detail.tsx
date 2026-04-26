@@ -580,7 +580,7 @@ export default function InstanceDetailPage() {
         <Form form={form} layout="vertical">
           <Form.Item name="name" label={t('instance.name')} rules={[{ required: true }]}><Input /></Form.Item>
           {isAdmin && (
-            <Form.Item name="type" label={t('instance.type')}>
+            <Form.Item name="type" label={t('instance.type')} initialValue={info?.config.type || 'docker'}>
               <Select disabled={!!daemon?.requireDocker}
                 options={(daemon?.requireDocker ? ['docker'] : ['generic', 'minecraft', 'bedrock', 'terraria', 'docker']).map(v => ({ label: v, value: v }))} />
             </Form.Item>
