@@ -260,7 +260,8 @@ export default function InstanceDetailPage() {
       return
     }
     let hostPort = v.hostPort
-    if (v.type === 'docker') {
+    const instanceType = v.type || editType || info?.config.type || 'docker'
+    if (instanceType === 'docker') {
       if (!hostPort) {
         try {
           hostPort = await instancesApi.freePort(did, portMin)
@@ -279,9 +280,9 @@ export default function InstanceDetailPage() {
         }
       }
     }
-    const ports = (v.type === 'docker' && hostPort) ? [`${hostPort}:${v.containerPort || hostPort}`] : []
+    const ports = (instanceType === 'docker' && hostPort) ? [`${hostPort}:${v.containerPort || hostPort}`] : []
     const cfg: Partial<InstanceConfig> = {
-      name: v.name, type: v.type, command: v.command,
+      name: v.name, type: v.type || editType || info?.config.type || 'docker', command: v.command,
       workingDir: v.workingDir ?? '', stopCmd: v.stopCmd || 'stop',
       autoStart: !!v.autoStart, autoRestart: !!v.autoRestart, restartDelay: v.restartDelay ?? 5,
       outputEncoding: v.outputEncoding || 'utf-8',

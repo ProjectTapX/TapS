@@ -198,10 +198,10 @@ func (m *Manager) Update(cfg protocol.InstanceConfig) (*Instance, error) {
 	// shouldn't drop or rename the auto-created volume.
 	prev := it.Config()
 	if cfg.Name == "" {
-		// Refuse to clobber the existing name with a blank — the panel
-		// has already auto-filled empty-name creates, but updates have
-		// historically passed Name through verbatim. Keep prev's name.
 		cfg.Name = prev.Name
+	}
+	if cfg.Type == "" {
+		cfg.Type = prev.Type
 	}
 	if prev.ManagedVolume != "" && cfg.ManagedVolume == "" {
 		cfg.ManagedVolume = prev.ManagedVolume
