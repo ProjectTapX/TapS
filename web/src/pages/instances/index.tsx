@@ -472,7 +472,7 @@ export default function InstancesPage() {
                       <Link to={`/instances/${r.daemonId}/${r.info.config.uuid}`} style={{ fontWeight: 500 }}>
                         {r.info.config.name}
                       </Link>
-                      {p && <Tag color="green" bordered={false} style={{ marginInlineEnd: 0 }}>{p.count}/{p.max}</Tag>}
+                      {p && p.max > 0 && <Tag color="green" bordered={false} style={{ marginInlineEnd: 0 }}>{p.count}/{p.max}</Tag>}
                     </Space>
                     <Tooltip title={r.info.config.uuid}>
                       <span className="taps-mono" style={{ color: 'var(--taps-text-muted)', fontSize: 11, cursor: 'pointer' }}

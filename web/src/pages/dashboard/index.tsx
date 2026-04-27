@@ -408,7 +408,7 @@ function UserDashboard() {
                   }
                   extra={
                     <Space>
-                      {players && (
+                      {players && players.max > 0 && (
                         <Tag color="green" bordered={false} style={{ fontWeight: 500 }}>
                           {t('instance.players')} {players.count}/{players.max}
                         </Tag>

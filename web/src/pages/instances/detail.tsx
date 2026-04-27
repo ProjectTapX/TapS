@@ -349,7 +349,7 @@ export default function InstanceDetailPage() {
           info ? (
             <Space size={12}>
               <StatusBadge variant={STATUS_VARIANT[dispStatus(info)]}>{t(`instance.status.${dispStatus(info)}`)}</StatusBadge>
-              {players && (
+              {players && players.max > 0 && (
                 <Tag color="green" bordered={false} style={{ marginInlineEnd: 0 }}>
                   {t('instance.players')} {players.count}/{players.max}
                 </Tag>
