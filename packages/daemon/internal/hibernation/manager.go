@@ -289,6 +289,8 @@ func (m *Manager) tick() {
 	for _, r := range results {
 		if r.ok {
 			m.cache[r.uuid] = r.brief
+		} else {
+			m.cache[r.uuid] = protocol.PlayersBrief{UUID: r.uuid, Online: false}
 		}
 	}
 	// Compute who needs to hibernate, while holding the lock so we don't
