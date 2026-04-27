@@ -1075,10 +1075,24 @@ func mcAddressFor(cfg protocol.InstanceConfig) (string, int) {
 	if host == "" {
 		host = "127.0.0.1"
 	}
+	// For docker instances, always prefer the host port from dockerPorts.
+	// minecraftPort is meaningless for docker (daemon pings from the host).
+	if cfg.Type == "docker" && len(cfg.DockerPorts) > 0 {
+		if _, p := parseHostPort(cfg.DockerPorts); p > 0 {
+			return host, p
+		}
+	}
 	if cfg.MinecraftPort > 0 {
 		return host, cfg.MinecraftPort
 	}
-	for _, spec := range cfg.DockerPorts {
+	if _, p := parseHostPort(cfg.DockerPorts); p > 0 {
+		return host, p
+	}
+	return host, 0
+}
+
+func parseHostPort(ports []string) (string, int) {
+	for _, spec := range ports {
 		body := spec
 		if i := strings.Index(body, "/"); i >= 0 {
 			body = body[:i]
@@ -1096,8 +1110,8 @@ func mcAddressFor(cfg protocol.InstanceConfig) (string, int) {
 			continue
 		}
 		if n, err := strconv.Atoi(strings.TrimSpace(hostStr)); err == nil && n > 0 {
-			return host, n
+			return "", n
 		}
 	}
-	return host, 0
+	return "", 0
 }
