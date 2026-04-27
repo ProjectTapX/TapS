@@ -91,6 +91,7 @@ export default function InstanceDetailPage() {
   const [info, setInfo] = useState<InstanceInfo | null>(null)
   const [daemon, setDaemon] = useState<DaemonView | null>(null)
   const [editOpen, setEditOpen] = useState(false)
+  const [editType, setEditType] = useState('docker')
   const [srvDeployOpen, setSrvDeployOpen] = useState(false)
   const [setupOpen, setSetupOpen] = useState(false)
   // Live docker stats and managed-volume usage. Both refresh on the same
@@ -212,6 +213,7 @@ export default function InstanceDetailPage() {
       const n = Number(c)
       if (Number.isFinite(n) && n > 0) containerPort = n
     }
+    setEditType(info.config.type || 'docker')
     form.setFieldsValue({
       ...info.config,
       argsText: (info.config.args ?? []).join(' '),
@@ -582,36 +584,27 @@ export default function InstanceDetailPage() {
           {isAdmin && (
             <Form.Item name="type" label={t('instance.type')} initialValue={info?.config.type || 'docker'}>
               <Select disabled={!!daemon?.requireDocker}
+                onChange={(v: string) => setEditType(v)}
                 options={(daemon?.requireDocker ? ['docker'] : ['generic', 'minecraft', 'bedrock', 'terraria', 'docker']).map(v => ({ label: v, value: v }))} />
             </Form.Item>
           )}
-          {/* Image / runtime selector. User role can switch between
-              already-pulled images for their instance (so they can swap
-              JRE versions etc.) but can't change the instance type. */}
-          <Form.Item noStyle shouldUpdate={(p, n) => p.type !== n.type}>
-            {({ getFieldValue }) => {
-              const ty = getFieldValue('type') || info?.config.type || 'docker'
-              return ty === 'docker' ? (
-                <Form.Item name="command" label={t('instance.runtime')} rules={[{ required: true }]}
-                  extra={imageOptions.length === 0
-                    ? <span>{t('instance.imageEmpty')} {isAdmin && <Link to="/images">{t('instance.imageGoPull')}</Link>}</span>
-                    : t('instance.runtimeHelp')}
-                >
-                  <Select showSearch options={imageOptions}
-                    placeholder={imageOptions.length === 0 ? t('instance.imageEmptyPh') : t('instance.imagePickPh')} />
-                </Form.Item>
-              ) : isAdmin ? (
-                <Form.Item name="command" label={t('instance.command')} rules={[{ required: true }]}><Input.TextArea rows={2} /></Form.Item>
-              ) : null
-            }}
-          </Form.Item>
-          <Form.Item noStyle shouldUpdate={(p, n) => p.type !== n.type}>
-            {({ getFieldValue }) => (getFieldValue('type') || info?.config.type || 'docker') === 'docker' && (
-              <Form.Item name="argsText" label={t('instance.dockerCmd')} extra={t('instance.dockerCmdHelp')}>
-                <Input className="taps-mono" placeholder='java -Xmx2G -jar server.jar nogui' />
-              </Form.Item>
-            )}
-          </Form.Item>
+          {editType === 'docker' ? (
+            <Form.Item name="command" label={t('instance.runtime')} rules={[{ required: true }]}
+              extra={imageOptions.length === 0
+                ? <span>{t('instance.imageEmpty')} {isAdmin && <Link to="/images">{t('instance.imageGoPull')}</Link>}</span>
+                : t('instance.runtimeHelp')}
+            >
+              <Select showSearch options={imageOptions}
+                placeholder={imageOptions.length === 0 ? t('instance.imageEmptyPh') : t('instance.imagePickPh')} />
+            </Form.Item>
+          ) : isAdmin ? (
+            <Form.Item name="command" label={t('instance.command')} rules={[{ required: true }]}><Input.TextArea rows={2} /></Form.Item>
+          ) : null}
+          {editType === 'docker' && (
+            <Form.Item name="argsText" label={t('instance.dockerCmd')} extra={t('instance.dockerCmdHelp')}>
+              <Input className="taps-mono" placeholder='java -Xmx2G -jar server.jar nogui' />
+            </Form.Item>
+          )}
           {isAdmin && <Form.Item name="workingDir" label={t('instance.workingDir')}><Input /></Form.Item>}
           <Form.Item name="stopCmd" label={t('instance.stopCmd')}><Input /></Form.Item>
           <Form.Item name="completionWordsText" label={t('instance.completion')} extra={t('instance.completionHelp')}>
@@ -630,27 +623,21 @@ export default function InstanceDetailPage() {
               ]} />
             </Form.Item>
           </Space>
-          {isAdmin && (
-            <Form.Item noStyle shouldUpdate={(p, n) => p.type !== n.type}>
-              {({ getFieldValue }) => (getFieldValue('type') || info?.config.type) === 'minecraft' && (
-                <Space>
-                  <Form.Item name="minecraftHost" label="MC Host"><Input placeholder="127.0.0.1" /></Form.Item>
-                  <Form.Item name="minecraftPort" label="MC Port"><InputNumber min={1} max={65535} placeholder="25565" /></Form.Item>
-                </Space>
-              )}
-            </Form.Item>
+          {isAdmin && editType === 'minecraft' && (
+            <Space>
+              <Form.Item name="minecraftHost" label="MC Host"><Input placeholder="127.0.0.1" /></Form.Item>
+              <Form.Item name="minecraftPort" label="MC Port"><InputNumber min={1} max={65535} placeholder="25565" /></Form.Item>
+            </Space>
           )}
           {!isAdmin && info?.config.type === 'docker' && (
             <Form.Item name="containerPort" label={t('docker.containerPort')} extra={t('docker.containerPortHelp')}>
               <InputNumber min={1} max={65535} placeholder={t('docker.containerPortPh')} style={{ width: '100%' }} />
             </Form.Item>
           )}
-          {isAdmin && (
-            <Form.Item noStyle shouldUpdate={(p, n) => p.type !== n.type}>
-              {({ getFieldValue }) => (getFieldValue('type') || info?.config.type || 'docker') === 'docker' && (
-                <>
-                  <Form.Item name="dockerEnvText" label={t('docker.env')}><Input.TextArea rows={3} placeholder='EULA=TRUE&#10;MEMORY=2G' /></Form.Item>
-                  <Form.Item name="dockerVolumesText" label={t('docker.volumes')}><Input.TextArea rows={2} placeholder='./mc-data:/data' /></Form.Item>
+          {isAdmin && editType === 'docker' && (
+            <>
+              <Form.Item name="dockerEnvText" label={t('docker.env')}><Input.TextArea rows={3} placeholder='EULA=TRUE&#10;MEMORY=2G' /></Form.Item>
+              <Form.Item name="dockerVolumesText" label={t('docker.volumes')}><Input.TextArea rows={2} placeholder='./mc-data:/data' /></Form.Item>
                   <Form.Item name="hostPort" label={t('docker.port')} extra={t('docker.portEditHelp', { min: portMin, max: portMax })}>
                     <InputNumber min={portMin} max={portMax} placeholder={t('docker.portAutoPh')} style={{ width: '100%' }} />
                   </Form.Item>
@@ -682,8 +669,6 @@ export default function InstanceDetailPage() {
                     <InputNumber min={1} max={1440} placeholder={t('hib.idleMinutesPh')} style={{ width: 200 }} />
                   </Form.Item>
                 </>
-              )}
-            </Form.Item>
           )}
         </Form>
       </Modal>
