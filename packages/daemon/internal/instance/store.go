@@ -212,6 +212,9 @@ func (m *Manager) Update(cfg protocol.InstanceConfig) (*Instance, error) {
 	if cfg.DockerDiskSize == "" && prev.DockerDiskSize != "" {
 		cfg.DockerDiskSize = prev.DockerDiskSize
 	}
+	if cfg.Command == "" && prev.Command != "" {
+		cfg.Command = prev.Command
+	}
 	if prev.ManagedVolume != "" && cfg.ManagedVolume == "" {
 		cfg.ManagedVolume = prev.ManagedVolume
 	}
