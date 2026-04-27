@@ -203,6 +203,15 @@ func (m *Manager) Update(cfg protocol.InstanceConfig) (*Instance, error) {
 	if cfg.Type == "" {
 		cfg.Type = prev.Type
 	}
+	if cfg.DockerMemory == "" && prev.DockerMemory != "" {
+		cfg.DockerMemory = prev.DockerMemory
+	}
+	if cfg.DockerCPU == "" && prev.DockerCPU != "" {
+		cfg.DockerCPU = prev.DockerCPU
+	}
+	if cfg.DockerDiskSize == "" && prev.DockerDiskSize != "" {
+		cfg.DockerDiskSize = prev.DockerDiskSize
+	}
 	if prev.ManagedVolume != "" && cfg.ManagedVolume == "" {
 		cfg.ManagedVolume = prev.ManagedVolume
 	}
