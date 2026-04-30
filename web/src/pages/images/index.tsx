@@ -154,7 +154,11 @@ export default function ImagesPage() {
               title: t('common.delete'), width: 120, align: 'right',
               render: (_, r) => (
                 <Popconfirm title={t('images.confirmRemove', { ref: `${r.repository}:${r.tag}` })} onConfirm={async () => {
-                  await dockerApi(daemonId!).remove(r.id); load()
+                  try {
+                    await dockerApi(daemonId!).remove(r.id)
+                    message.success(t('common.success'))
+                    load()
+                  } catch (e: any) { message.error(formatApiError(e, 'common.error')) }
                 }}>
                   <Button size="small" danger>{t('common.delete')}</Button>
                 </Popconfirm>

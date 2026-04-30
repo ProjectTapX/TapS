@@ -32,7 +32,7 @@ var (
 	// ASCII subset is good enough for any real registry.
 	imageRefRe = regexp.MustCompile(`^[a-z0-9][a-z0-9._/:@-]{0,254}$`)
 	// Container/image IDs: hex digests, short hashes, or simple names.
-	idRe = regexp.MustCompile(`^[A-Za-z0-9_-]{1,128}$`)
+	idRe = regexp.MustCompile(`^[A-Za-z0-9:_-]{1,128}$`)
 )
 
 // validImage rejects flag-shaped tokens and arbitrarily long input.
