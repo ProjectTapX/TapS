@@ -76,7 +76,7 @@ if [[ "$UPGRADE" == true ]]; then
   WEB_DIR=$(grep -oP 'TAPS_WEB_DIR=\K.*' /etc/systemd/system/taps-panel.service 2>/dev/null || echo "/opt/taps/web")
   rm -rf "${WEB_DIR}"
   mkdir -p "${WEB_DIR}"
-  tar -xzf /tmp/taps-web.tar.gz -C "${WEB_DIR}"
+  tar -xzf /tmp/taps-web.tar.gz -C "${WEB_DIR}" --strip-components=1
   rm -f /tmp/taps-web.tar.gz
 
   info "Starting taps-panel..."
@@ -112,7 +112,7 @@ else
   curl -fSL "${DOWNLOAD_BASE}/web.tar.gz" -o /tmp/taps-web.tar.gz
   rm -rf "${WEB_DIR}"
   mkdir -p "${WEB_DIR}"
-  tar -xzf /tmp/taps-web.tar.gz -C "${WEB_DIR}"
+  tar -xzf /tmp/taps-web.tar.gz -C "${WEB_DIR}" --strip-components=1
   rm -f /tmp/taps-web.tar.gz
 
   # --- Create data directory ---
